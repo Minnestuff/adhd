@@ -212,3 +212,12 @@ body {
   font-size: 12px;
   padding-left: 2px;
 }
+form{
+  float: left;
+}
+.pull-left{
+  float: left;
+}
+.clear{
+  clear: both;
+}
