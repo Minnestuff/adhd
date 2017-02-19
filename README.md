@@ -1,5 +1,4 @@
 <h1>iMonitor - A Chrome Extension to Track and Block usage of addictive website by time</h1>
-<hr/>
 <p>A chrome extension to monitor usage of any websites of your choice. The user can block, set up alerts or monitor through the dashboard his/her usage of any websites. User can set up three levels of severity for any website:
 	<ul>
 		<li>1. Severe: The website will be blocked for the day if the user has crossed the time limit for that website.</li>
