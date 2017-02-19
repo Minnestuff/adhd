@@ -38,17 +38,14 @@ $(function() {
 	updatePieChart();
 	$('.button').on('click',function(e){
 		e.preventDefault();
-		console.log($('.website').val().length);
 		if($('.website').val().length === 0 || severity === "Action" || $('.timeout-number').val().length === 0){
 			alert("Missing data!");
-			console.log("here");
 			return;
 		}
 		sites = getLocalStorage();
 		if(sites == undefined || sites == null || sites.length <= 0){
 			sites = new Array();
 		}
-		console.log(sites);
 		var site = new Object();
 		site.url = $('.website').val();
 		site.timeout = 0;
@@ -58,7 +55,6 @@ $(function() {
 		storeLocally(sites);
 		$('.sites-table>tbody').append('<tr><td>'+(sites.length)+'</td><td>'+site.url+'</td><td>'+site.timeout+'</td><td>'+site.maxTimeout+'</td><td>'+site.severity+'</td>');
 		$('.sites-number').html(sites.length);
-		console.log(getLocalStorage());
 	});
 	function storeLocally(data){
 		localStorage.setItem("sites",JSON.stringify(data));
@@ -68,7 +64,6 @@ $(function() {
 	}
 	function loadTable(){
 		var sites = JSON.parse(localStorage.getItem("sites"));
-		console.log(sites);
 		if(sites != null) {
 			for(var i=0; i < sites.length; i++){
 				$('.sites-table>tbody').append('<tr><td>'+(i+1)+'</td><td>'+sites[i].url+'</td><td>'+sites[i].timeout+'</td><td>'+sites[i].maxTimeout+'</td><td>'+sites[i].severity+'</td>');

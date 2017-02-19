@@ -11,8 +11,6 @@ body {
 
   }
 }
-
-
 /** Login Page **/
 #login {
   padding-top: 40px;
@@ -206,7 +204,6 @@ body {
   background-color: rgba(255,0,0,.25);
 }
 
-
 .control-label .required {
   color: #e02222;
   font-size: 12px;
@@ -227,16 +224,3 @@ h1{
   margin: 0px auto;
   text-align: center;
 }
-/*.pull-left{
-  float: left;
-}
-form{
-  width: 100%;
-}
-.website, .dropdown{
-  float: left;
-  
-}
-.clear{
-  clear: both;
-  }*/
