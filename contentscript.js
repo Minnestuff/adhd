@@ -46,9 +46,9 @@ function setTime(){
 					else if(sites[i].severity === "Moderate") {
 						if (Notification.permission !== "granted")
 							Notification.requestPermission();
-						else if(notificaitonCount == 0){
-							var notificationTitle = "You are spending too much time on " + sites[i].url + "s";
-							var notificationText = "You have spent " + sites[i].timeout;
+						else if((notificaitonCount%300) == 0){
+							var notificationTitle = "You are spending too much time on " + sites[i].url;
+							var notificationText = "You have spent " + sites[i].timeout + " seconds";
 							var notification = new Notification(notificationTitle, {
 								icon: '/icon.png',
 								body: notificationText
@@ -57,8 +57,8 @@ function setTime(){
 							notification.onclick = function () {
 								window.open("/dashboard.html");      
 							};
-							++notificaitonCount;
 						}
+						++notificaitonCount;
 					}
 				}
 				setLocalStorage(sites);
