@@ -5,4 +5,4 @@
 		<li>Moderate: The browser shall notify the user once the user has croseed the time limit for the website.</li>
 		<li>Low: The extension shall record this along with all the websites with different severity and display statistics on the dashboard</li>
 	</ul>
-	This extension will be available on the Chrome App Store soon and we will post a link to it. </p>
+	The user shall provide the amount of time he wishes to use any website before it is blocked or notified or recorded. This extension will be available on the Chrome App Store soon and we will post a link to it. </p>
