@@ -91,6 +91,10 @@
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
+
+function getLocalStorage(){
+  return JSON.parse(localStorage.getItem("sites"));
+}
 var totalSeconds = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -103,8 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(setTime, 1000);
 
     function setTime(){
-      ++totalSeconds; 
-      renderStatus('you have spent ' + totalSeconds + ' seconds on ' + url);
+      
     }
 
   });
