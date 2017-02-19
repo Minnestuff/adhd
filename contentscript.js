@@ -36,32 +36,34 @@ function setTime(){
 	++totalTimer;
 	chrome.tabs.query({currentWindow: true, active: true}, function(tabs){	
 		for( var i = 0; i < sites.length; i++) {
-			if(tabs[0].url.toString().indexOf(sites[i].url) != -1) {
-				++sites[i].timeout;
-				myNewUrl = "timeout.html";
-				if(sites[i].timeout > sites[i].maxTimeout) {	
-					if(sites[i].severity === "Severe") {
-						chrome.tabs.update(tabs[0].id, {url: myNewUrl});
-					}
-					else if(sites[i].severity === "Moderate") {
-						if (Notification.permission !== "granted")
-							Notification.requestPermission();
-						else if((notificaitonCount%300) == 0){
-							var notificationTitle = "You are spending too much time on " + sites[i].url;
-							var notificationText = "You have spent " + sites[i].timeout + " seconds";
-							var notification = new Notification(notificationTitle, {
-								icon: '/icon.png',
-								body: notificationText
-							});
-
-							notification.onclick = function () {
-								window.open("/dashboard.html");      
-							};
+			if(tabs[0].url !== undefined || tabs[0].url !== null) { 
+				if(tabs[0].url.toString().indexOf(sites[i].url) != -1) {
+					++sites[i].timeout;
+					myNewUrl = "timeout.html";
+					if(sites[i].timeout > sites[i].maxTimeout) {	
+						if(sites[i].severity === "Severe") {
+							chrome.tabs.update(tabs[0].id, {url: myNewUrl});
 						}
-						++notificaitonCount;
+						else if(sites[i].severity === "Moderate") {
+							if (Notification.permission !== "granted")
+								Notification.requestPermission();
+							else if((notificaitonCount%300) === 0){
+								var notificationTitle = "You are spending too much time on " + sites[i].url;
+								var notificationText = "You have spent " + sites[i].timeout + " seconds";
+								var notification = new Notification(notificationTitle, {
+									icon: '/icon.png',
+									body: notificationText
+								});
+
+								notification.onclick = function () {
+									window.open("/dashboard.html");      
+								};
+							}
+							++notificaitonCount;
+						}
 					}
+					setLocalStorage(sites);
 				}
-				setLocalStorage(sites);
 			}
 		}
 	});

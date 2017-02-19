@@ -53,8 +53,10 @@ $(function() {
 		site.severity = severity;
 		sites.push(site);
 		storeLocally(sites);
-		$('.sites-table>tbody').append('<tr><td>'+(sites.length)+'</td><td>'+site.url+'</td><td>'+site.timeout+'</td><td>'+site.maxTimeout+'</td><td>'+site.severity+'</td>');
+		$('.sites-table>tbody').append('<tr><td>'+(sites.length)+'</td><td>'+site.url+'</td><td>'+site.timeout+'</td><td>'+site.maxTimeout+'</td><td>'+site.severity+'</td><td><a class="delete"><input type="hidden" value='+sites.length+' class="index"><i class="icon-remove"></i></a></td>');
 		$('.sites-number').html(sites.length);
+		$('.website').val("");
+		$('.timeout-number').val("");
 	});
 	function storeLocally(data){
 		localStorage.setItem("sites",JSON.stringify(data));
@@ -65,10 +67,24 @@ $(function() {
 	function loadTable(){
 		var sites = JSON.parse(localStorage.getItem("sites"));
 		if(sites != null) {
-			for(var i=0; i < sites.length; i++){
-				$('.sites-table>tbody').append('<tr><td>'+(i+1)+'</td><td>'+sites[i].url+'</td><td>'+sites[i].timeout+'</td><td>'+sites[i].maxTimeout+'</td><td>'+sites[i].severity+'</td>');
-				$('.sites-number').html(sites.length);
+			if(sites.length === 0){
+				$('.sites-table>tbody').html("");
+				$('.sites-number').html(0);
+			}
+			else {
+				for(var i=0; i < sites.length; i++){
+					$('.sites-table>tbody').append('<tr><td>'+(i+1)+'</td><td>'+sites[i].url+'</td><td>'+sites[i].timeout+'</td><td>'+sites[i].maxTimeout+'</td><td>'+sites[i].severity+'</td><td><a class="delete"><input type="hidden" value='+(i+1)+' class="index"><i class="icon-remove"></i></a></td>');
+					$('.sites-number').html(sites.length);
+				}
 			}
 		}
 	}
+	$(".delete").on('click',function(e){
+		e.preventDefault();
+		var deleteElementNo = $(this).find("input").val() - 1;
+		var sites = getLocalStorage();
+		sites.splice(deleteElementNo,1);
+		storeLocally(sites);
+		loadTable();
+	})
 });

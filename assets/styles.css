@@ -224,3 +224,6 @@ h1{
   margin: 0px auto;
   text-align: center;
 }
+.delete{
+  cursor: pointer;
+}
