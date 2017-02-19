@@ -7,4 +7,4 @@
 	</ul>
 	The user shall provide the amount of time he wishes to use any website before it is blocked or notified or recorded.
 </p>
-<b>URL:</b><a href="https://chrome.google.com/webstore/detail/imonitor/gompjjalgphonibceemijmlanbokpkii">https://chrome.google.com/webstore/detail/imonitor/gompjjalgphonibceemijmlanbokpkii</a>
+<b>URL:</b>&nbsp;<a href="https://chrome.google.com/webstore/detail/imonitor/gompjjalgphonibceemijmlanbokpkii">https://chrome.google.com/webstore/detail/imonitor/gompjjalgphonibceemijmlanbokpkii</a>
