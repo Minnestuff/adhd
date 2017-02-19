@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
+  "name": "iMonitor",
   "description": "This extension shows a Google Image search result for the current page",
   "version": "0.1",
 
@@ -15,7 +15,8 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
-    "tabs"
+    "tabs",
+    "notifications"
   ],
   "background" : {
     "scripts":["contentscript.js"]
